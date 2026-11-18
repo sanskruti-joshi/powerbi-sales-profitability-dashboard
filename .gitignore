@@ -1,15 +1,17 @@
-# Temporary and backup files
+
+# Power BI temporary and backup files
 *.tmp
 *.bak
 *.log
 
-# Power BI temporary files
-*.pbit
-~$*.pbix
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Editor files
+# Visual Studio Code
 .vscode/
+
+# Windows and macOS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Temporary Office files
+~$*.xlsx
+~$*.xls
