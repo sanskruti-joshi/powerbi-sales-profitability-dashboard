@@ -1,0 +1,10 @@
+# Normalize line endings across Windows/macOS to prevent fake Git diffs
+* text=auto eol=lf
+
+# Force GitHub Linguist to display Power BI semantic model and report languages
+*.tmdl linguist-language=TMDL
+*.tmdl linguist-detectable=true
+*.json linguist-detectable=true
+
+# Exclude auto-generated layout/diagram files from skewing language percentages
+diagramLayout.json linguist-generated=true
