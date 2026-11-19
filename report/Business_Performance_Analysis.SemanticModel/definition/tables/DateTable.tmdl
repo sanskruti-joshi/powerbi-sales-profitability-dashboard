@@ -1,0 +1,57 @@
+table DateTable
+	lineageTag: 9ae1c435-4d18-456f-8f28-08385ec91e31
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: b8cdb428-e9a7-436c-bb45-20bbcf560c5f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = YEAR(DateTable[Date])
+		formatString: 0
+		lineageTag: 3ff00c9c-ed5b-4305-841c-c8767b001941
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number' = MONTH(DateTable[Date])
+		formatString: 0
+		lineageTag: 81923f3a-12ae-4e9e-bcd9-57feb042bbe3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name' = FORMAT(DateTable[Date], "MMMM")
+		lineageTag: f8063dda-fdc4-4a4e-8b64-6e73ab0ba06b
+		summarizeBy: none
+		sortByColumn: 'Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month' = ```
+			FORMAT(DateTable[Date], "YYYY-MM") 
+			```
+		lineageTag: a635256b-9f83-4d5f-889e-44f3b4d2a29e
+		summarizeBy: none
+		sortByColumn: YearMonthSort
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonthSort = YEAR(DateTable[Date])*100 + MONTH(DateTable[Date])
+		formatString: 0
+		lineageTag: 8c3256d3-e596-42d4-bc18-2b0c0727fbb9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DateTable = calculated
+		mode: import
+		source = CALENDAR(MIN(Sheet1[Date]),MAX(Sheet1[Date]))
+
+	annotation PBI_Id = 7c44b153668d4df4be3ca789eb1cd2d1
+
